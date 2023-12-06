@@ -428,9 +428,6 @@ input:checked + .slider:before {
   border: 1px solid black;
 }
 
-
-
-/* CSS */
 .button {
   padding: 12px 26px;
   color: var(--off-color);
