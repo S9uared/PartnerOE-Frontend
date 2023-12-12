@@ -42,7 +42,7 @@ h4 {
 
 p,
 label {
-  color: var(--background-color);
+  color: var(--secondary-color);
   font-family: var(--font-family);
 }
 
