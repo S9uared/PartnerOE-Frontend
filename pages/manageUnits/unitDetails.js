@@ -26,8 +26,8 @@ async function fetchAndRenderUnitDetails(unitId) {
       unit = await fetch(`${URL}/oneunit/${unitId}`, makeOptions("GET", null, true)).then(handleHttpErrors);
       const owner = await fetchOwnerDetails(unit.ownerId);
       const ownerFullName = `${owner.firstName} ${owner.lastName}`;
-      const unitDetailsHTML = generateUnitDetailsHTML(unit, ownerFullName);
-      document.getElementById("unit-details-content").innerHTML = unitDetailsHTML;
+      generateUnitDetailsHTML(unit, ownerFullName);
+      //document.getElementById("unit-details-content").innerHTML = unitDetailsHTML;
 
   } catch (err) {
       console.error("Could not fetch unit: " + err);
@@ -63,7 +63,8 @@ async function fetchOwnerDetails(ownerId) {
       unitDetailsBox3.innerHTML = `<h3>Addresse</h3><p class="unit-address"> ${unit.location.address} ${unit.unitNumber}</p>`
 
       unitDetailsBox4.innerHTML = `<h3>Info</h3><p class="unit-owner">Ejer: ${ownerFullName}</p>
-      <p class="unit-keyCode">Nøgle: ${unit.keyCode}</p>`
+      <p class="unit-keyCode">Nøgle: ${unit.keyCode}</p>
+      <p class="unit-type">Type: ${unit.type}</p>`
 
       unitDetailsBox5.innerHTML = unit.cleaningPlans.map((plan) => `
       <h3>Rengøringsplan</h3>
@@ -87,14 +88,14 @@ async function fetchOwnerDetails(ownerId) {
       console.log('Address:', unit.location.address); // Log location ID
       
     
-      return `
-        <div class="unit-info-box">
-          <p class="unit-number">Unit Number: ${unit.unitNumber}</p>
-          <p class="unit-status">Status: ${unit.status}</p>
-          <p class="unit-type">Type: ${unit.type}</p>
-          <p class="unit-location">Location: ${unit.location.locationName}</p>
-          <!-- Add other unit details as needed -->
-        </div>`;
+      // return `
+      //   <div class="unit-info-box">
+      //     <p class="unit-number">Unit Number: ${unit.unitNumber}</p>
+      //     <p class="unit-status">Status: ${unit.status}</p>
+      //     <p class="unit-type">Type: ${unit.type}</p>
+      //     <p class="unit-location">Location: ${unit.location.locationName}</p>
+      //     <!-- Add other unit details as needed -->
+      //   </div>`;
     }
 
     function setBorderColor(element, status) {
